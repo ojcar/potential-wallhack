@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="large-6 large-centered">
+		<h1>The quiz has ended!</h1>
+	</div>
+	<div class="large-12 large-centered">
+		<h2>Your Score: <%= @score %> correct answers out of <%= @questions %> questions.</h2>
+	</div>
+</div>
+
+<% if current_user.admin? %>
+	<hr>
+	<div class="row">
+		<h3>Result Summary</h3>
+		<table>
+			<th>Question</th>
+			<th>Result</th>
+		<% @result.each do |i| %>
+			<tr>
+				<td><%= i[0] %></td>
+				<td><%= i[1] %></td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+<% end %>

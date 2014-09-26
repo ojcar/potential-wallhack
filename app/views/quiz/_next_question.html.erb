@@ -1,0 +1,26 @@
+<%= form_for @quiz do |f| %>
+  <div class="row">
+    <div class="large-12 large-centered columns">
+      <h2 class="text-center"><%= @question.title %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @question.images.shuffle.each do |i| %>
+        <div class="large-3 columns">
+          <%= radio_button_tag :user_answer, i.id %>
+          <%= image_tag i.location %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="large-6 large-centered columns">
+      <div class="text-center">
+        <%= f.submit "Submit", :class => 'button' %>
+      </div>
+    </div>
+  </div>
+
+  <%= hidden_field_tag 'question', @question.id %>
+<% end %>
